@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+    <!-- favicon -->
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- libraries -->
+    <script src='js/mapbox.js'></script>
+    <script src='js/jquery-1.10.2.min.js'></script>
+
+    <!-- scripts -->
+    <script src='js/setup.js'></script>
+
+    <!-- stylesheets -->
+    <link href='css/style.css' rel='stylesheet' />
+    <link href='css/mapbox.css' rel='stylesheet' />
+
+    <!--[if lte IE 8]>
+      <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+    <![endif]-->
+
+    <!-- typeface -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300italic' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <body>
+    <div id='map'></div>
+    <script type='text/javascript'>
+      // help me i'm scared
+      // aka don't delete this.
+    </script>
+
+    <div id="logo">
+      <img src="images/hobo-logo.png" />
+    </div>
+
+    <div id='filter-div'>
+      <div class='header'>I am...</div>
+
+      <div id='filter-options'>
+        <label><input class="filter-checkbox" type="checkbox" name="filter" value="hungry" checked="checked">&nbsp;hungry
+
+          <svg id="svg-food" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+
+          <path fill="#333333" d="M100,24.305l-3.439-1.75l-3.095-1.559l-3.44-1.73l-1.71,3.598l-4.797,9.744C77.412,16.219,61.635,4.543,43.117,4.543   C19.304,4.543,0,23.848,0,47.66s19.304,43.117,43.117,43.117c4.022,0,7.914-0.557,11.607-1.59l0.884,3.455L56.296,95h3.055h0.421   h20.321h0.422h3.056l0.687-2.436L95.59,43.589L96.675,39h-4.174l5.788-11.49L100,24.305z M43.119,78.008   c-16.763,0-30.35-13.588-30.35-30.348c0-16.762,13.587-30.43,30.35-30.43C57.647,17.23,69.786,27,72.762,41H68.77   c-2.897-12-13.281-19.879-25.652-19.879c-14.613,0-26.457,11.886-26.457,26.499c0,14.611,11.844,26.479,26.457,26.479   c3.333,0,6.52-0.612,9.457-1.737l1.022,3.781C50.33,77.345,46.801,78.008,43.119,78.008z M86.303,43h5.544L80.515,91h-0.422H59.771   h-0.421L48.017,43h34.425l9.313-18.66l3.096,1.503L86.303,43z"/>
+          </svg>
+
+        </label><br>
+
+        <label><input class="filter-checkbox" type="checkbox" name="filter" value="tired" checked="checked">&nbsp;tired
+
+          <svg id="svg-bed" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Your_Icon" x="0px" y="0px" width="35px" height="35px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+          <path fill="#333333" d="M17.439,37.395c3.561,0,6.447,2.89,6.447,6.45c0,3.559-2.886,6.446-6.447,6.446  c-3.562,0-6.445-2.888-6.445-6.446C10.994,40.285,13.876,37.395,17.439,37.395"/>
+          <path fill="#333333" d="M88.486,50.21H26.985v-0.003c0.002-6.203,5.033-11.233,11.235-11.235h0.005h39.021h0.005h0.002  C83.459,38.974,88.486,44.004,88.486,50.21"/>
+          <polygon fill="#333333" points="100,38.057 100,72.717 91.748,72.717 91.748,63.914 8.254,63.914 8.254,72.717 0,72.717 0,27.283   8.254,27.283 8.254,52.768 91.748,52.768 91.748,38.057 "/>
+          </svg>
+
+        </label><br>
+
+        <label><input class="filter-checkbox" type="checkbox" name="filter" value="sick">&nbsp;sick
+
+          <svg id="svg-hospital" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+
+          <path fill="#333333" d="M10,90h40V10H10V90z M44,82.003H34v-10h10V82.003z M44,64H34V54h10V64z M16.001,26.002h10v-10h8v10h10v8    H34v10h-8v-10h-10V26.002z M16.001,54h10v10h-10V54z M16.001,72.003h10v10h-10V72.003z"/>
+          <path fill="#333333" d="M56.001,90h10V70h14v20h10V46.002h-34V90z"/>
+          <path fill="#333333" d="M56.001,36.002V40h34v-3.999H56.001z"/>
+
+          </svg>
+
+        </label><br>
+
+        <label><input class="filter-checkbox" type="checkbox" name="filter" value="danger">&nbsp;in danger
+
+          <svg id="svg-danger" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="tiny" id="Layer_1" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 100 100" xml:space="preserve">
+
+          <path fill="#333333" d="M45.59,15.789l-34.184,61.57C8.562,82.543,9.77,87.5,17.457,87.5h65.082c7.705,0,8.896-4.957,6.051-10.141   L53.699,15.953c-0.707-1.383-1.734-2.911-3.914-2.891C47.467,13.104,46.316,14.406,45.59,15.789z M45.5,35.5h8v28h-8V35.5z    M45.5,69.5h8v8h-8V69.5z"/>
+          </svg>
+
+        </label>
+      </div>
+    </div>
+
+    <div id="footer">
+      <div id="learn-more"><b>+</b> <u>Want to support?</u></div>
+      <div id="about">
+      <p><b>Homeless Offerings by Organizations</b>, or HOBO, is a need-based service locator within the DC area, aimed toward the homeless. First, HOBO displays your current location. Choosing one or more options of <i>tired</i>, <i>hungry</i>, <i>sick</i>, or <i>in danger</i>, HOBO then displays providers for said needs, and directions to such locations.</p>
+       
+      <p>Financial support goes directly to shelters and other organizations in the DC area via PayPal.</p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- credits
+
+  <a href="http://thenounproject.com/noun/food/#icon-No12386" target="_blank">Food</a> designed by <a href="http://thenounproject.com/ben.jurca" target="_blank">Johannes Ben Jurca</a> from The Noun Project 
+
+  <a href="http://thenounproject.com/noun/bed/#icon-No18003" target="_blank">Bed</a> designed by <a href="http://thenounproject.com/djbill" target="_blank">Francesco Ferraro</a> from The Noun Project 
+
+  <a href="http://thenounproject.com/noun/hospital/#icon-No17221" target="_blank">Hospital</a> designed by <a href="http://thenounproject.com/alexeyivanov" target="_blank">Alexey Ivanov</a> from The Noun Project 
+
+  <a href="http://thenounproject.com/noun/warning/#icon-No18974" target="_blank">Warning</a> designed by <a href="http://thenounproject.com/Icomatic" target="_blank">Icomatic</a> from The Noun Project 
+
+  -->
