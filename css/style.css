@@ -39,7 +39,6 @@ i {
 #filter-div {
 	z-index: 1;
 	float: right;
-	width: 25%;
 	min-width: 175px;
 
 	background-color: rgba(255,255,255,0.7);
@@ -131,5 +130,5 @@ input[type='checkbox']:checked {
 	color: white;
 }
 #about p {
-	letter-spacing: 1px;
+	/*letter-spacing: 1px;*/
 }
