@@ -1,7 +1,7 @@
 var map, lat, lon, current, hungryJson, hungry, tiredJson, sickJson, dangerJson, markers;
 
 $.ajax({
-  url: '69.175.214.21:4567/food',
+  url: '69.175.214.21:50010/food',
   data: '',
   success: function(res){
   	// console.log(res);
@@ -21,7 +21,7 @@ $.ajax({
 });
 
 $.ajax({
-  url: '69.175.214.21:4567/tired',
+  url: '69.175.214.21:50010/tired',
   data: '',
   success: function(res){
   	// console.log(res);
