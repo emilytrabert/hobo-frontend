@@ -1,8 +1,10 @@
 var map, lat, lon, current, hungryJson, hungry, tiredJson, sickJson, dangerJson, markers;
 
 $.ajax({
-  url: '69.175.214.21:50010/food',
+  url: 'http://www.hoboapp.org:50010/food?callback=?',
   data: '',
+  contentType:"application/json",
+  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	hungryJson = res.response;
@@ -17,12 +19,18 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Hungry get failed", textStatus);
   },
-  dataType: 'json'
+  dataType: 'jsonp'
 });
 
 $.ajax({
+<<<<<<< Updated upstream
   url: '69.175.214.21:50010/tired',
+=======
+  url: 'http://www.hoboapp.org:50010/tired?callback=?',
+>>>>>>> Stashed changes
   data: '',
+  contentType:"application/json",
+  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	tiredJson = res.response;
@@ -37,7 +45,7 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Tired get failed", textStatus);
   },
-  dataType: 'json'
+  dataType: 'jsonp'
 });
 
 sickJson = null;
@@ -188,7 +196,12 @@ function initialsetup() {
 }
 
 $.ajax({
+<<<<<<< Updated upstream
   url: '69.175.214.21:4567/sick',
+=======
+  url: 'www.hoboapp.org:50010/sick?callback=?',
+  headers:{"Access-Control-Allow-Origin":"*"},
+>>>>>>> Stashed changes
   data: '',
   success: function(res){
   	// console.log(res);
@@ -204,12 +217,17 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Sick get failed", textStatus);
   },
-  dataType: 'json'
+  dataType: 'jsonp'
 });
 
 $.ajax({
+<<<<<<< Updated upstream
   url: '69.175.214.21:4567/danger',
+=======
+  url: 'www.hoboapp.org:50010/danger?callback=?',
+>>>>>>> Stashed changes
   data: '',
+  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	dangerJson = res.response;
@@ -224,5 +242,5 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Danger get failed", textStatus);
   },
-  dataType: 'json'
+  dataType: 'jsonp'
 });
