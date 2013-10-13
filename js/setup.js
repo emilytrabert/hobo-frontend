@@ -1,22 +1,42 @@
 var map, lat, lon, current, hungryJson, hungry, tiredJson, sickJson, dangerJson, markers;
 
-$.get('json/json.json', function(data, status, jqxhr) {
-	hungryJson = data;
-	hungry = true;
+$.ajax({
+  url: 'json/test.json',
+  data: '',
+  success: function(res){
+  	// console.log(res);
+  	hungryJson = res.resp;
+  	hungry = true;
 	for (var i = 0; i < hungryJson.length; i++) {
-		hungryJson[i].properties['marker-color'] = 'yellow';
+		hungryJson[i].properties['marker-color'] = '#e5e500';
 		hungryJson[i].properties.description = 'Test';
+		hungryJson[i].properties.title = hungryJson[i].properties.name;
 	}
-}, "json");
+  },
+  error: function(jqXHR, textStatus, errorThrown){
+  	console.log("Hungry get failed", textStatus);
+  },
+  dataType: 'json'
+});
 
-// $.get(url, function(data, status, jqxhr) {
-// 	tiredJson = data;
-// 	json = true;
-// 	for (var i = 0; i < tiredJson.length; i++) {
-// 		tiredJson[i].properties['marker-color'] = 'orange';
-// 		tiredJson[i].properties.description = 'Test';
-// 	}
-// });
+$.ajax({
+  url: 'json/test.json',
+  data: '',
+  success: function(res){
+  	// console.log(res);
+  	tiredJson = res.resp;
+  	tired = true;
+	for (var i = 0; i < tiredJson.length; i++) {
+		tiredJson[i].properties['marker-color'] = '#ffa500';
+		tiredJson[i].properties.description = 'Test';
+		tiredJson[i].properties.title = tiredJson[i].properties.name;
+	}
+  },
+  error: function(jqXHR, textStatus, errorThrown){
+  	console.log("Tired get failed", textStatus);
+  },
+  dataType: 'json'
+});
 
 sickJson = null;
 sick = false;
@@ -118,7 +138,7 @@ $(document).ready(function(){
 });
 
 function initialsetup() {
-	// markers = [{
+	// hungryJson = [{
 	// 	type: 'Feature',
 	// 	geometry: {
 	// 		type: 'Point',
@@ -146,13 +166,14 @@ function initialsetup() {
 
 	
 
-	markers = [];
-	markers = markers.concat(hungryJson);
-	// markers = markers.concat(tiredJson);
-	markers = markers.concat(current);
+	markers = current;
+	if (hungryJson) {
+		markers = markers.concat(hungryJson);
+	}
+	if (tiredJson) {
+		markers = markers.concat(tiredJson);
+	}
 	console.log(markers);
 
 	map.markerLayer.setGeoJSON(markers);
 }
-
-hungryJson = [{'type':'Feature', 'geometry':{'type':'Point', 'coordinates': [-77,38.9]},properties:{'eligibility':'7th - 9th grade','desc':'7 th grade through 9 th grade.  Strives to make dramatic improvements in the achievements of all students today in preparation for the world tomorrow.    ','address_1':'925 RHODE ISLAND AVENUE NW','area_served':'District of Columbia','address_2':'','keyword':'Schools-Public','email':'','web_url':'http//www.k12.dc.us','name':'DCG - DCPS - JHS - Shaw','business_hours':'800 am - 430 pm Monday - Friday','zip':'20001-4140','phone_1':'(202) 673-7203','marker-color': '#000'}}];

@@ -1,0 +1,1 @@
+{"resp":[{"type": "Feature","geometry": {"type": "Point","coordinates": [-77, 38.9]},"properties": {"title": "Marker One"}},{"type": "Feature","geometry": {"type": "Point","coordinates": [-77.05, 38.95]},"properties": {"title": "Marker Two"}}]}
