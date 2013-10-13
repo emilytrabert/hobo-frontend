@@ -1,7 +1,7 @@
 var map, lat, lon, current, hungryJson, hungry, tiredJson, sickJson, dangerJson, markers;
 
 $.ajax({
-  url: '69.175.214.21:4567',
+  url: '69.175.214.21:4567/food',
   data: '',
   success: function(res){
   	// console.log(res);
@@ -21,11 +21,11 @@ $.ajax({
 });
 
 $.ajax({
-  url: 'json/test.json',
+  url: '69.175.214.21:4567/tired',
   data: '',
   success: function(res){
   	// console.log(res);
-  	tiredJson = res.resp;
+  	tiredJson = res.response;
   	tired = true;
 	for (var i = 0; i < tiredJson.length; i++) {
 		tiredJson[i].properties['marker-color'] = '#ffa500';
@@ -188,11 +188,11 @@ function initialsetup() {
 }
 
 $.ajax({
-  url: 'json/test.json',
+  url: '69.175.214.21:4567/sick',
   data: '',
   success: function(res){
   	// console.log(res);
-  	sickJson = res.resp;
+  	sickJson = res.response;
   	sick = false;
 	for (var i = 0; i < sickJson.length; i++) {
 		sickJson[i].properties['marker-color'] = '#ce0000';
@@ -208,11 +208,11 @@ $.ajax({
 });
 
 $.ajax({
-  url: 'json/test.json',
+  url: '69.175.214.21:4567/danger',
   data: '',
   success: function(res){
   	// console.log(res);
-  	dangerJson = res.resp;
+  	dangerJson = res.response;
   	danger = false;
 	for (var i = 0; i < dangerJson.length; i++) {
 		dangerJson[i].properties['marker-color'] = '#990099';
