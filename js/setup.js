@@ -3,8 +3,6 @@ var map, lat, lon, current, hungryJson, hungry, tiredJson, sickJson, dangerJson,
 $.ajax({
   url: 'json/food.json',
   data: '',
-  contentType:"application/json",
-  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	hungryJson = res.resp;
@@ -30,21 +28,29 @@ $.ajax({
 		hungryJson[i].geometry.coordinates[0] = save;
 
 		if (hungryJson[i].properties.title == "H.O.B.O App") {
-			hungryJson[i].properties.description += '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>';
+			hungryJson[i].properties.description += '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">\
+<input type="hidden" name="cmd" value="_donations">\
+<input type="hidden" name="business" value="9HFZ35BKFYKCE">\
+<input type="hidden" name="lc" value="US">\
+<input type="hidden" name="item_name" value="HOBO App">\
+<input type="hidden" name="amount" value="5.00">\
+<input type="hidden" name="currency_code" value="USD">\
+<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">\
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">\
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">\
+</form>'
 		}
 	}
   },
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Hungry get failed", textStatus);
   },
-  dataType: 'jsonp'
+  dataType: 'json'
 });
 
 $.ajax({
   url: 'json/tired.json',
   data: '',
-  contentType:"application/json",
-  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	tiredJson = res.resp;
@@ -73,7 +79,7 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Tired get failed", textStatus);
   },
-  dataType: 'jsonp'
+  dataType: 'json'
 });
 
 sickJson = null;
@@ -254,13 +260,12 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Sick get failed", textStatus);
   },
-  dataType: 'jsonp'
+  dataType: 'json'
 });
 
 $.ajax({
   url: 'json/danger.json',
   data: '',
-  headers:{"Access-Control-Allow-Origin":"*"},
   success: function(res){
   	// console.log(res);
   	dangerJson = res.resp;
@@ -289,5 +294,5 @@ $.ajax({
   error: function(jqXHR, textStatus, errorThrown){
   	console.log("Danger get failed", textStatus);
   },
-  dataType: 'jsonp'
+  dataType: 'json'
 });
